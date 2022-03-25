@@ -3,14 +3,31 @@ import './register.scss'
 
 const Register = () => {
     const [email,setEmail] = useState("")
-    const [password,setPassword] =useState("")
+    const pass ={
+        password: "",
+        passwordAgain: ""
+    }
+    const [password,setPassword] =useState(pass)
+    const [message, setMessage] =useState(`Enter your email to register.`)
 
     const emailRef = useRef()
     const passwordRef = useRef()
 
-    const handleRegister = () =>{
-        setEmail(emailRef.current.value)
-        setPassword(passwordRef.current.value)
+    const handleChange = (e) =>{
+        setPassword({
+            ...password,
+            [e.target.id]:e.target.value,
+        })
+    }
+
+    const handleRegister = () =>{   
+        if(password.password === password.passwordAgain){
+            setMessage(`Welcome to "PLAY"!`)
+            setEmail(emailRef.current.value)
+            setPassword(passwordRef.current.value)
+        }else{
+            setMessage(`Passwords don't match! Try again!`)
+        }
     }
 
   return (
@@ -24,17 +41,31 @@ const Register = () => {
         <div className='wellcome-massage'>
             <h1>Unlimited, Marathon movies and series.</h1>
             <h3>Watch what you like! anywhere and anytime.</h3>
-            <p>Enter your email to register.</p>
+            <p>{message}</p>
             <div className='register-input'>
                 <input type="email" placeholder='email address' ref={emailRef}/>
 
-                {/* {!password === passwordAgain
-                } */}
-                <input type="password" placeholder='create your password' />
-                <input type="passwordAgain" placeholder='confirm password' />
+                <input 
+                    type="password" 
+                    id="password"
+                    name="password"
+                    placeholder='create your password' 
+                    value={password.password}
+                    ref={passwordRef}
+                    onChange={handleChange}
+
+                />
+                <input 
+                    type="password" 
+                    id="passwordAgain"
+                    name="passwordAgain"
+                    placeholder='confirm password' 
+                    value={password.passwordAgain}
+                    onChange={handleChange}
+                />
 
 
-                <button className='register-button'>Register</button>
+                <button className='register-button' onClick={handleRegister}>Register</button>
             </div>
         </div>
     </div>
