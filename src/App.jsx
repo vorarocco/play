@@ -7,9 +7,9 @@ import LogIn from './login/LogIn';
 function App() {
   return (
     <div className="App"> 
-      {/* <Home/> */}
+      <Home/>
       {/* <Watch/> */}
-      <Register/>
+      {/* <Register/> */}
       {/* <LogIn/> */}
 
     </div>

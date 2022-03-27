@@ -1,0 +1,85 @@
+.login{
+    -webkit-background-size: cover;
+    // -moz-background-size: cover;
+    // -o-background-size: cover;
+    background-size:cover;
+    position: relative;
+
+    // background-image:url(/images/register_bg.png);
+
+    // full - screen
+    width: 100vw;
+    height: 100vh;
+    // background: linear-gradient(to bottom, black 0%,black 100%);
+    color: white;
+
+    form{
+        width: 300px;
+        height: 300px;
+        padding: 30px;
+        border-radius: 5px;
+        background-color: var(--main-color);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+
+        .login-button{
+            background-color: red;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: 500;
+            height: 40px;
+            cursor: pointer;
+          }
+          input{
+            height: 40px;
+            background-color: white;
+            border-radius: 5px;
+            border: none;
+
+        }
+        span{
+            color: lightgrey;
+            b{
+                color: white;
+            }
+        }
+    }
+    .login-top{
+        .login-wrapper{
+             padding: 20px 50px;
+             display: flex;
+             align-items: center;
+             justify-content: space-between;
+
+             .logo{
+                height: 150px;
+             }
+        }
+    }
+    .wellcome-massage{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+        h1{
+            font-size: 50px;
+        }
+
+        h3{
+            margin: 20px;
+        }
+
+        p{
+            font-size: 16px;
+        }
+    }
+}

@@ -42,14 +42,20 @@ const Register = () => {
             <h1>Unlimited, Marathon movies and series.</h1>
             <h3>Watch what you like! anywhere and anytime.</h3>
             <p>{message}</p>
+
             <div className='register-input'>
-                <input type="email" placeholder='email address' ref={emailRef}/>
+                <input 
+                    type="email" 
+                    placeholder='email address'
+                    required="" 
+                    ref={emailRef}/>
 
                 <input 
                     type="password" 
                     id="password"
                     name="password"
                     placeholder='create your password' 
+                    required="" 
                     value={password.password}
                     ref={passwordRef}
                     onChange={handleChange}
@@ -60,6 +66,7 @@ const Register = () => {
                     id="passwordAgain"
                     name="passwordAgain"
                     placeholder='confirm password' 
+                    required="" 
                     value={password.passwordAgain}
                     onChange={handleChange}
                 />
