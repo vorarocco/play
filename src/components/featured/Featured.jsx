@@ -1,9 +1,29 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import "./featured.scss"
+import axios from 'axios';
 
 const Featured = ({type}) => {
+    const [content,setContent] = useState({})
+
+    useEffect(()=>{
+        const getRandomContent = async()=>{
+            try{
+                const res = await axios.get(`${process.env.REACT_APP_backendURI}movies/random?type=${type}`,     {
+                    headers:{
+                      token:
+                      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo"
+                    }
+                  })
+                setContent(res.data[0])
+            }catch(err){
+                console.log(err)
+            }
+        }
+        getRandomContent()
+    },[type])
+    console.log(content)
   return (
     <div className='featured'>
         {type && (
@@ -23,13 +43,15 @@ const Featured = ({type}) => {
             </div>
         )}
         <img 
-        width= '100%'
-        src="https://static1.colliderimages.com/wordpress/wp-content/uploads/2022/01/The-Best-Movie-Franchises-To-Binge-Watch.jpg" alt="" />
+            width= '100%'
+            src={content.img}
+            alt="" 
+        />
         <div className="info">
-            <img src="https://starwarsblog.starwars.com/wp-content/uploads/2017/01/sw-the-last-jedi-tall-1200x630.jpg" alt="" />
+            <img src={content.imgTitle} alt="" />
 
             <span className='description'>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ut molestias nostrum illum quidem. Tempora, saepe illum tenetur odit, excepturi fugiat modi amet quos temporibus debitis accusamus id. Placeat, assumenda sit?
+                {content.description}
             </span>
             <div className="buttons">
                 <button className='play-button'>

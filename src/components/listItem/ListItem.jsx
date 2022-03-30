@@ -1,52 +1,71 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './listItem.scss'
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import AddIcon from '@mui/icons-material/Add';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
+import { Link } from "react-router-dom";
+import axios from 'axios';
 
-const ListItem = ({index}) => {
+
+const ListItem = ({index, item}) => {
   const [isHovered,setIsHovered] = useState(false)
-  const trailer = 
-  "https://cdn.springboardplatform.com/storage/comingsoon.net/conversion/1746594.mp4"
-// "https://ak.picdn.net/shutterstock/videos/1033184651/preview/stock-footage-camera-follows-hipster-millennial-young-woman-in-orange-jacket-running-up-on-top-of-mountain-summit.webm"
+  const [movie, setMovie] = useState({})
 
-// "https://www.imdb.com/video/vi3275932441?ref_=ext_shr_lnk"
-
+  useEffect(()=>{
+    const getMovie = async()=>{
+      try{
+        // console.log(item)
+        const res = await axios.get(`${process.env.REACT_APP_backendURI}movies/find/${item}`,{
+            headers:{
+              token:
+              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo" 
+          }
+        })  
+        // console.log(res)
+        setMovie(res.data)
+        
+      }catch(err){
+        console.log(err)
+      }
+    }
+    getMovie()
+  },[item])
 
   return (
-    <div className='listItem' 
-          style={{left: isHovered && index * 225 -50 }}
-          onMouseEnter={()=> setIsHovered(true)}
-          onMouseLeave={()=> setIsHovered(false)}
-          >
-        <img src="https://nbcpalmsprings.com/wp-content/uploads/sites/8/2021/12/BEST-MOVIES-OF-2021.jpeg" alt="" />
+    <Link to={{ pathname: "/watch"}}state={{movie}}>
+      <div className='listItem' 
+            style={{left: isHovered && index * 225 -50 }}
+            onMouseEnter={()=> setIsHovered(true)}
+            onMouseLeave={()=> setIsHovered(false)}
+            >
+              <img src={movie.img} alt="" />
 
-        {isHovered && (
-          <div>
-
-        <video src={trailer} autoPlay={true} loop></video>
-        <div className='itemInfo'>
-          <div className='icons'>
-            <PlayArrowIcon className='icon'/>
-            <AddIcon className='icon'/>
-            <ThumbUpIcon className='icon'/>
-            <ThumbDownIcon className='icon'/>
-          </div>
-          <div className='itemInfo-top'>
-            <span> 1 hour 45 mins</span>
-            <span className='limit'>+13</span>
-            <span>2000</span>
-          </div>
-          <div className='description'>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione tempore sint asperiores eum inventore explicabo quos consequatur 
-          </div>
-          <div className='genre'>Action</div>
-          </div>
-          </div>
-        )}
-        
-    </div>
+          {isHovered && (
+            <>
+              <video src={movie.trailer} autoPlay={true} loop/>
+              
+              <div className='itemInfo'>
+                <div className='icons'>
+                  <PlayArrowIcon className='icon'/>
+                  <AddIcon className='icon'/>
+                  <ThumbUpIcon className='icon'/>
+                  <ThumbDownIcon className='icon'/>
+                </div>
+                <div className='itemInfo-top'>
+                  <span>{movie.duration}</span>
+                  <span className='limit'>{movie.limit}</span>
+                  <span>{movie.year}</span>
+                </div>
+                <div className='description'>
+                  {movie.description}
+                </div>
+                <div className='genre'>{movie.genre}</div>
+                </div> 
+            </>
+          )}
+      </div>
+    </Link>
   )
 }
 
