@@ -4,6 +4,7 @@ import AdminMovieL from '../adminMovieL/AdminMovieL'
 import AdminAddList from '../adminAddList/AdminAddList'
 import AdminAddMovie from '../adminAddMovie/AdminAddMovie'
 import axios from 'axios';
+import AdminEditForm from '../adminEditForm/AdminEditForm'
 
 
 const AdminPage = () => {
@@ -64,6 +65,7 @@ let getMovies = async()=>{
         <AdminAddMovie addMovie={addMovie}/>
         <AdminMovieL/>
         <AdminListL/>
+        {/* <AdminEditForm path=/> */}
     </div>
   )
 }

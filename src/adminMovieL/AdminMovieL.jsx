@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom';
 import './adminMovieL.scss'
 import axios from 'axios';
 
 
 const AdminMovieL = () => {
     const [movies, setMovies] = useState([])
+    const [movie, setMovie] = useState({})
 
-    useEffect(()=>{
         let getMovies = async()=>{
           try{
             // console.log(item)
@@ -23,6 +24,28 @@ const AdminMovieL = () => {
             console.log(err)
           }
         }
+
+      let getMovie = (movie)=>{
+        setMovie(movie)
+      }
+
+      let deleteMovie = async(movie)=>{
+        let data = await axios.delete(`${process.env.REACT_APP_backendURI}movies/${movie._id}`,{
+          method: 'DELETE',
+          body: null,
+          headers:{
+            token:
+            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo",
+            "Content-Type": "application/json" 
+        }
+      })  
+      let allMovies = await data.json()
+      if (allMovies){
+      setMovies(allMovies)
+      }
+      }
+
+      useEffect(()=>{
         getMovies()
       },[])
     
@@ -43,19 +66,21 @@ const AdminMovieL = () => {
                     </tr>
                 </tbody>
 
-            {movies?.map(onemovie =>{
+            {movies?.map(movie =>{
                 return(
-                    <tbody key={onemovie._id}>
+                    <tbody key={movie._id}>
                         <tr>
-                        <td >{onemovie._id}</td>
-                        <td><img className='smallImage' src={onemovie.img} alt=""/></td>
-                        <td>{onemovie.title}</td>
-                        <td>{onemovie.year}</td>
-                        <td>{onemovie.limit}</td>
-                        <td>{onemovie.genre}</td>
+                        <td >{movie._id}</td>
+                        <td><img className='smallImage' src={movie.img} alt=""/></td>
+                        <td>{movie.title}</td>
+                        <td>{movie.year}</td>
+                        <td>{movie.limit}</td>
+                        <td>{movie.genre}</td>
                         <td>
+                          <Link to={{pathname:`/movies/${movie._id}/edit`}}>
                             <button className='button edit_bt'>Edit</button>
-                            <button className='button delete_bt'>Delete</button>
+                          </Link>
+                            <button className='button delete_bt' onClick={()=> deleteMovie(movie)}>Delete</button>
                         </td>
                     </tr>
                     </tbody>

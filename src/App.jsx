@@ -7,6 +7,8 @@ import Register from './register/Register';
 import LogIn from './login/LogIn';
 import AdminPage from './adminPage/AdminPage';
 import { useEffect, useState } from 'react';
+// import AdminEditForm from './adminEditForm/AdminEditForm';
+import AdminEditMovie from './adminEditMovie/AdminEditMovie';
 
 
 function App() {
@@ -27,6 +29,8 @@ function App() {
           </>
         )}
         <Route path="/admin" element={<AdminPage/>}/>
+        <Route path="/movies/:id/edit" element={<AdminEditMovie/>}/>
+
 
 
       </Routes>
