@@ -24,8 +24,8 @@ function App() {
         <Route path="/register" element={!user ? <Register/> : <Navigate to="/"/>}/>
         {/* <Route path="/register" element={<Register/>}/> */}
 
-        {/* <Route path="/login" element={!user ? <LogIn /> : <Navigate to="/"/>}/> */}
-        <Route path="/login" element={<LogIn />}/>
+        <Route path="/login" element={!user ? <LogIn /> : <Navigate to="/"/>}/>
+        {/* <Route path="/login" element={<LogIn />}/> */}
 
         <Route exact path="/" element={user ? <Home/> : <Navigate to="/register"/>} />
         {user && (

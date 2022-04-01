@@ -15,6 +15,7 @@ const Home = ({type}) => {
 
   useEffect(()=>{
     console.log(context)
+    
     const getRandomLists = async ()=>{
       try{
           const res = await axios.get(
