@@ -28,7 +28,7 @@ const ListItem = ({index, item}) => {
           }
         }
         )  
-        // console.log(res)
+        console.log(res)
         setMovie(res.data)
         
       }catch(err){
@@ -45,7 +45,7 @@ const ListItem = ({index, item}) => {
             onMouseEnter={()=> setIsHovered(true)}
             onMouseLeave={()=> setIsHovered(false)}
             >
-              <img src={movie.img} alt="" />
+              <img src={movie?.img} alt="" />
 
           {isHovered && (
             <>

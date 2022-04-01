@@ -12,21 +12,25 @@ const Nav = () => {
     <div className='navbar'>
         <div className='container'>
             <div className='nav-left'>
+
+                <Link to="/" className='link'>
                 <img className='nav-logo' src="/images/play_logo.png" alt="play-logo" />
+                </Link>
+
                 <Link to="/" className='link'>
                 <span>Home</span>
                 </Link>
 
-                <Link to="/new" className='link'>
-                <span>New</span>
-                </Link>
-                
                 <Link to="/series" className='link'>
                 <span>Series</span>
                 </Link>
 
                 <Link to="/movies" className='link'>
                 <span>Movies</span>
+                </Link>
+
+                <Link to="/new" className='link'>
+                <span>New</span>
                 </Link>
 
                 <Link to="/mylist" className='link'>

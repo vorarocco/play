@@ -1,16 +1,20 @@
 import React, { useRef, useState, useContext } from 'react'
 import './login.scss'
+import { useNavigate } from 'react-router-dom'
 import { login } from '../context/authContext/apiCall'
 import { AuthContext } from '../context/authContext/AuthContext'
 
 const Login = () => {
     const [email,setEmail] = useState("")
     const [password,setPassword] = useState("")
-    const { isFetching, dispatch } = useContext(AuthContext);
+    const {  dispatch } = useContext(AuthContext);
+
+    const navigate = useNavigate()
 
     const handleLogin = (e) =>{
         e.preventDefault();
         login({ email, password }, dispatch)
+        navigate('/')
     }
 
   return (
@@ -41,7 +45,7 @@ const Login = () => {
                 <button 
                     className='login-button'
                     onClick={handleLogin}
-                    disabled={isFetching}
+                    
                     >
                         Log In</button>
                 <span>New to PLAY? <b>Register now.</b></span>

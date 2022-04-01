@@ -15,6 +15,7 @@ import {AuthContext}from './context/authContext/AuthContext'
 function App() {
   // const user = false
   const { user } = useContext(AuthContext);
+  console.log(user)
 
 
   return (
@@ -22,8 +23,10 @@ function App() {
     <div> 
       <Routes>
         <Route path="/register" element={!user ? <Register/> : <Navigate to="/"/>}/>
-        <Route path="/login" element={!user ? <LogIn /> : <Navigate to="/"/>}/>
-        {/* <Route path="/login" element={<LogIn />}/> */}
+        {/* <Route path="/register" element={<Register/>}/> */}
+
+        {/* <Route path="/login" element={!user ? <LogIn /> : <Navigate to="/"/>}/> */}
+        <Route path="/login" element={<LogIn />}/>
 
         <Route exact path="/" element={user ? <Home/> : <Navigate to="/register"/>} />
         {user && (
