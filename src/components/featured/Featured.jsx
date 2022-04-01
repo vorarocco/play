@@ -29,7 +29,7 @@ const Featured = ({type, setGenre}) => {
         }
         getRandomContent()
     },[type])
-    console.log(content)
+    // console.log(content)
   return (
     <div className='featured'>
         {type && (

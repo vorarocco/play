@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom';
 import './adminMovieL.scss'
 import axios from 'axios';
-
+import { AuthContext } from '../context/authContext/AuthContext'
+import { useContext } from 'react';
 
 const AdminMovieL = () => {
     const [movies, setMovies] = useState([])
     const [movie, setMovie] = useState({})
+    const context = useContext(AuthContext)
+
 
         let getMovies = async()=>{
           try{
@@ -14,7 +17,7 @@ const AdminMovieL = () => {
             const res = await axios.get(`${process.env.REACT_APP_backendURI}movies`,{
                 headers:{
                   token:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo" 
+                  `Bearer ${context.user.accesToken}` 
               }
             })  
             // console.log(res)
@@ -31,8 +34,7 @@ const AdminMovieL = () => {
           body: null,
           headers:{
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo",
-            "Content-Type": "application/json" 
+            `Bearer ${context.user.accesToken}` 
         }
       })  
       let allMovies = await data.json()

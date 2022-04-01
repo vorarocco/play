@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import './adminAddMovie.scss'
 import Popup from '../components/popup/Popup'
+import { AuthContext } from '../context/authContext/AuthContext'
+import { useContext } from 'react';
 
 
 const AdminAddMovie = ({addMovie}) => {
@@ -20,7 +22,9 @@ const AdminAddMovie = ({addMovie}) => {
 
 
     const [newForm , setNewForm] = useState(form)
-  const [isOpen , setIsOpen] = useState(false)
+    const [isOpen , setIsOpen] = useState(false)
+    const context = useContext(AuthContext)
+
 
 
     const togglePopup = () =>{
@@ -47,7 +51,7 @@ const AdminAddMovie = ({addMovie}) => {
         }),
         headers:{
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo",
+            `Bearer ${context.user.accesToken}`,
             "Content-Type": "application/json"
         }
     })

@@ -2,12 +2,15 @@ import React,{useState} from 'react'
 import { useNavigate } from 'react-router-dom'
 import axios from "axios"
 import './adminEditForm.scss'
+import { AuthContext } from '../context/authContext/AuthContext'
+import { useContext } from 'react';
 
 const AdminEditForm = ({movie,setMovie}) => {
 
-    
   let [editForm , setEditForm] = useState({movie})
   const navigate = useNavigate()
+  const context = useContext(AuthContext)
+
 
   console.log(editForm)
 
@@ -33,7 +36,7 @@ const AdminEditForm = ({movie,setMovie}) => {
         }),
         headers:{
             token:
-            "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo",
+            `Bearer ${context.user.accesToken}`,
             "Content-Type": "application/json"
         }
     })
@@ -49,11 +52,11 @@ const AdminEditForm = ({movie,setMovie}) => {
             })
         }
     return (
-    <div>
+    <div className='editForm'>
         <h1>Edit Movie</h1>
         <form onSubmit={handleSubmit}>
-                <ul>
-                <li>
+                <ul className='ul'>
+                <li className='li'>
                     <label htmlFor="title">Title:</label>
                     <input 
                         type="text" 
@@ -63,7 +66,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.title} 
                         placeholder='title'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="description">description:</label>
                     <textarea 
                         type="text" 
@@ -74,7 +77,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         placeholder='description'>    
                     </textarea>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="img">Img:</label>
                     <input 
                         type="text" 
@@ -84,7 +87,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.img} 
                         placeholder='img'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="imgTitle">ImgTitle:</label>
                     <input 
                         type="text" 
@@ -94,7 +97,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.imgTitle} 
                         placeholder='imgTitle'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="imgSmall">ImgSmall:</label>
                     <input 
                         type="text" 
@@ -104,7 +107,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.imgSmall} 
                         placeholder='imgSmall'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="trailer">trailer:</label>
                     <input 
                         type="text" 
@@ -114,7 +117,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.trailer} 
                         placeholder='trailer'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="video">video:</label>
                     <input 
                         type="text" 
@@ -124,7 +127,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.video} 
                         placeholder='video'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="year">year:</label>
                     <input 
                         type="text" 
@@ -134,7 +137,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.year} 
                         placeholder='year'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="limit">limit:</label>
                     <input 
                         type="text" 
@@ -144,7 +147,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.limit} 
                         placeholder='limit'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="genre">genre:</label>
                     <input 
                         type="text" 
@@ -154,17 +157,7 @@ const AdminEditForm = ({movie,setMovie}) => {
                         defaultValue={movie.genre} 
                         placeholder='genre'/>
                 </li>
-                <li>
-                    <label htmlFor="img">Img:</label>
-                    <input 
-                        type="text" 
-                        id='img' 
-                        name='img' 
-                        onChange ={handleChange} 
-                        defaultValue={movie.img} 
-                        placeholder='img'/>
-                </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="isSeries">Check for Series:</label>
                     <input 
                         type="checkbox" 

@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './adminListL.scss'
 import axios from 'axios';
+import { AuthContext } from '../context/authContext/AuthContext'
+import { useContext } from 'react';
 
 
 const AdminListL = () => {
     const [lists, setLists] = useState([])
+    const context = useContext(AuthContext)
+
 
     useEffect(()=>{
         let getLists = async()=>{
@@ -13,7 +17,7 @@ const AdminListL = () => {
             const res = await axios.get(`${process.env.REACT_APP_backendURI}lists`,{
                 headers:{
                   token:
-                  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo" 
+                  `Bearer ${context.user.accesToken}` 
               }
             })  
             // console.log(res)

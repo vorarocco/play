@@ -2,6 +2,8 @@ import React,{useState, useEffect} from 'react'
 import AdminEditForm from '../adminEditForm/AdminEditForm'
 import { useParams } from "react-router-dom"
 import axios from 'axios';
+import { AuthContext } from '../context/authContext/AuthContext'
+import { useContext } from 'react';
 
 
 import './AdminEditMovie'
@@ -9,6 +11,8 @@ import './AdminEditMovie'
 const AdminEditMovie = () => {
     const [movie,setMovie]=useState({})
     let {id} = useParams()
+    const context = useContext(AuthContext)
+
 
  useEffect(()=>{
     let getMovie = async() =>{
@@ -17,7 +21,7 @@ const AdminEditMovie = () => {
             ,{
                 headers:{
                   token:
-                    "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo"    
+                  `Bearer ${context.user.accesToken}`    
                 }
             })
             console.log(res.data)

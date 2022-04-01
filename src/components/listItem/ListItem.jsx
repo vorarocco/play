@@ -15,7 +15,7 @@ const ListItem = ({index, item}) => {
   const context = useContext(AuthContext)
 
   useEffect(()=>{
-    console.log(context)
+    // console.log(context)
 
     const getMovie = async()=>{
       try{
@@ -28,7 +28,7 @@ const ListItem = ({index, item}) => {
           }
         }
         )  
-        console.log(res)
+        // console.log(res)
         setMovie(res.data)
         
       }catch(err){

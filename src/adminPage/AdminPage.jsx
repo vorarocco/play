@@ -8,6 +8,10 @@ import axios from 'axios';
 import AdminEditForm from '../adminEditForm/AdminEditForm'
 import Popup from '../components/popup/Popup'
 import './adminPage.scss'
+import { AuthContext } from '../context/authContext/AuthContext'
+import { useContext } from 'react';
+
+
 
 
 
@@ -15,6 +19,7 @@ const AdminPage = () => {
     const[lists,setLists] = useState([])
     const[list,setList] = useState({})
     const[movies,setMovies] = useState([])
+    const context = useContext(AuthContext)
 
     let getLists = async()=>{
     try{
@@ -22,9 +27,9 @@ const AdminPage = () => {
         const res = await axios.get(`${process.env.REACT_APP_backendURI}lists`,{
             headers:{
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo" 
-              }
-            })  
+              `Bearer ${context.user.accesToken}`
+            }
+          })  
             // console.log(res)
         setLists(res.data)
             
@@ -39,7 +44,7 @@ let getMovies = async()=>{
         const res = await axios.get(`${process.env.REACT_APP_backendURI}movies`,{
             headers:{
               token:
-                "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo" 
+              `Bearer ${context.user.accesToken}` 
               }
             })  
             // console.log(res)
@@ -67,6 +72,11 @@ let getMovies = async()=>{
   return (
     <div>
       <h1 className='h1Admin'>AdminPage</h1>
+
+      <Link to='/'>
+        <button className='back_bt'>Back</button>
+      </Link>
+      
          
         <AdminAddMovie addMovie={addMovie}/>
         <AdminMovieL/>
