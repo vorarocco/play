@@ -35,8 +35,6 @@ const Register = () => {
         try {
             await axios.post(`${process.env.REACT_APP_backendURI}auth/register`,{
                 headers:{
-                    token:
-                    "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
                     "Content-Type": "application/json" 
                 }
             })

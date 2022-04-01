@@ -13,8 +13,8 @@ import { useContext }from 'react'
 import {AuthContext}from './context/authContext/AuthContext'
 
 function App() {
-  const user = true
-  // const { user } = useContext(AuthContext);
+  // const user = false
+  const { user } = useContext(AuthContext);
 
 
   return (

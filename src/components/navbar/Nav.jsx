@@ -41,7 +41,7 @@ const Nav = () => {
             <SearchIcon className='icon'/>
             <NotificationsIcon className='icon'/>
             <ChildCareIcon className='icon'/>
-            {/* <img className='icon' src="/images/icon_user.png" alt="kid" /> */}
+           
             <img className='icon-img' src="/images/icon_user.png" alt="kid" />
 
             <div className='profile'>

@@ -6,22 +6,28 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ThumbDownIcon from '@mui/icons-material/ThumbDown';
 import { Link } from "react-router-dom";
 import axios from 'axios';
-
+import { useContext } from 'react';
+import { AuthContext } from '../../context/authContext/AuthContext'
 
 const ListItem = ({index, item}) => {
   const [isHovered,setIsHovered] = useState(false)
   const [movie, setMovie] = useState({})
+  const context = useContext(AuthContext)
 
   useEffect(()=>{
+    console.log(context)
+
     const getMovie = async()=>{
       try{
         // console.log(item)
-        const res = await axios.get(`${process.env.REACT_APP_backendURI}movies/find/${item}`,{
+        const res = await axios.get(`${process.env.REACT_APP_backendURI}movies/find/${item}`,
+        {
             headers:{
               token:
-              "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo" 
+              `Bearer ${context.user.accesToken}` 
           }
-        })  
+        }
+        )  
         // console.log(res)
         setMovie(res.data)
         
