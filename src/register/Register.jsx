@@ -1,8 +1,10 @@
+import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import './register.scss'
 
 const Register = () => {
     const [email,setEmail] = useState("")
+    const [username, setUsername] = useState("");
     const pass ={
         password: "",
         passwordAgain: ""
@@ -11,6 +13,7 @@ const Register = () => {
     const [message, setMessage] =useState(`Enter your email to register.`)
 
     const emailRef = useRef()
+    const usernameRef = useRef()
     const passwordRef = useRef()
 
     const handleChange = (e) =>{
@@ -20,13 +23,25 @@ const Register = () => {
         })
     }
 
-    const handleRegister = () =>{   
+    const handleRegister = async () =>{   
         if(password.password === password.passwordAgain){
             setMessage(`Welcome to "PLAY"!`)
             setEmail(emailRef.current.value)
+            setUsername(usernameRef.current.value)
             setPassword(passwordRef.current.value)
         }else{
             setMessage(`Passwords don't match! Try again!`)
+        }
+        try {
+            await axios.post(`${process.env.REACT_APP_backendURI}auth/register`,{
+                headers:{
+                    token:
+                    "Bearer "+JSON.parse(localStorage.getItem("user")).accessToken,
+                    "Content-Type": "application/json" 
+                }
+            })
+        } catch (err) {
+
         }
     }
 
@@ -49,6 +64,11 @@ const Register = () => {
                     placeholder='email address'
                     required="" 
                     ref={emailRef}/>
+                <input 
+                    type="username" 
+                    placeholder='username'
+                    required="" 
+                    ref={usernameRef}/>
 
                 <input 
                     type="password" 

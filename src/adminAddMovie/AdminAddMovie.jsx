@@ -1,5 +1,7 @@
 import React,{useState} from 'react'
 import './adminAddMovie.scss'
+import Popup from '../components/popup/Popup'
+
 
 const AdminAddMovie = ({addMovie}) => {
     const form ={
@@ -15,7 +17,15 @@ const AdminAddMovie = ({addMovie}) => {
         genre: " ",
         isSeries: false
     }
+
+
     const [newForm , setNewForm] = useState(form)
+  const [isOpen , setIsOpen] = useState(false)
+
+
+    const togglePopup = () =>{
+        setIsOpen(!isOpen)
+      }
 
   let handleSubmit = async (e) =>{
     e.preventDefault()
@@ -45,6 +55,8 @@ const AdminAddMovie = ({addMovie}) => {
     console.log(list)
     addMovie(list)
     setNewForm(form)
+    togglePopup()
+
 }
 
 let handleChange = (e) =>{
@@ -54,8 +66,12 @@ let handleChange = (e) =>{
     })}
 
   return (
-    <div>AdminAddMovie
-
+      <>
+    <div>
+        <input className='button addnew' type="button" value="Add New Movie" onClick={togglePopup}/>
+    </div>
+        {isOpen && <Popup 
+            content={<>
         <form onSubmit={handleSubmit}>
                 <ul>
                 <li>
@@ -180,12 +196,15 @@ let handleChange = (e) =>{
                         placeholder='isSeries'/>
                 </li>
                 </ul>
-                
 
             <input type="submit" value='Add new movie' />
         </form>
 
-    </div>
+        </> }
+        handleClose={togglePopup}
+        />} 
+    {/* </div> */}
+ </>
   )
 }
 

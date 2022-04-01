@@ -25,10 +25,6 @@ const AdminMovieL = () => {
           }
         }
 
-      let getMovie = (movie)=>{
-        setMovie(movie)
-      }
-
       let deleteMovie = async(movie)=>{
         let data = await axios.delete(`${process.env.REACT_APP_backendURI}movies/${movie._id}`,{
           method: 'DELETE',

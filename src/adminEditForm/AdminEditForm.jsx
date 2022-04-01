@@ -37,9 +37,8 @@ const AdminEditForm = ({movie,setMovie}) => {
             "Content-Type": "application/json"
         }
     })
+    navigate('/admin')
     setMovie(res.data)
-    // navigate('/admin')
-
         }catch(err){
             console.log(err)
         }

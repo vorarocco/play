@@ -4,13 +4,13 @@ import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 import "./featured.scss"
 import axios from 'axios';
 
-const Featured = ({type}) => {
+const Featured = ({type, setGenre}) => {
     const [content,setContent] = useState({})
 
     useEffect(()=>{
         const getRandomContent = async()=>{
             try{
-                const res = await axios.get(`${process.env.REACT_APP_backendURI}movies/random?type=${type}`,     {
+                const res = await axios.get(`${process.env.REACT_APP_backendURI}movies/random?type=${type}`,{
                     headers:{
                       token:
                       "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDI4ZjdiMmIzZjQ2MDg0MDExMWFjYyIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY0ODUzMzEzNSwiZXhwIjoxNjQ5MTM3OTM1fQ.hsic2ISw4nzf59oKzG-O524jdpS3Ah559gAwirBO9Lo"
@@ -29,7 +29,12 @@ const Featured = ({type}) => {
         {type && (
             <div className='category'>
                 <span>{type === 'movies' ? 'Movies' : 'Series'}</span>
-                <select name="genre" id="genre">
+                <select 
+                    name="genre" 
+                    id="genre"
+                    onChange={(e) => setGenre(e.target.value)}
+                    >
+
                     <option>Genres</option>
                     <option value="comedy">Comedy</option>
                     <option value="action">Action</option>

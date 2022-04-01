@@ -30,7 +30,7 @@ function List({list}) {
 
             <div className='container_list' ref={listRef}>
                 {list.content.map((item,i) => (
-                <ListItem index={i} item={item} />
+                <ListItem index={i} item={item} key={item._id}/>
                 ))}
             </div>
             <ArrowForwardIosIcon className='slideArrow right' onClick={()=>handleClick('right')} />

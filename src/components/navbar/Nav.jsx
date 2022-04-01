@@ -35,6 +35,9 @@ const Nav = () => {
             </div>
 
             <div className='nav-right'>
+                <Link to="/admin" className='link'>
+                <span>Admin</span>
+                </Link>
             <SearchIcon className='icon'/>
             <NotificationsIcon className='icon'/>
             <ChildCareIcon className='icon'/>
