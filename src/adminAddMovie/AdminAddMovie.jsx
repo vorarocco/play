@@ -76,9 +76,9 @@ let handleChange = (e) =>{
     </div>
         {isOpen && <Popup 
             content={<>
-        <form onSubmit={handleSubmit}>
-                <ul>
-                <li>
+        <form className='addForm' onSubmit={handleSubmit}>
+                <ul className='ul'>
+                <li className='li'>
                     <label htmlFor="title">Title:</label>
                     <input 
                         type="text" 
@@ -88,7 +88,7 @@ let handleChange = (e) =>{
                         value={newForm.title} 
                         placeholder='title'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="description">description:</label>
                     <textarea 
                         type="text" 
@@ -99,7 +99,7 @@ let handleChange = (e) =>{
                         placeholder='description'>    
                     </textarea>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="img">Img:</label>
                     <input 
                         type="text" 
@@ -109,7 +109,7 @@ let handleChange = (e) =>{
                         value={newForm.img} 
                         placeholder='img'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="imgTitle">ImgTitle:</label>
                     <input 
                         type="text" 
@@ -119,7 +119,7 @@ let handleChange = (e) =>{
                         value={newForm.imgTitle} 
                         placeholder='imgTitle'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="imgSmall">ImgSmall:</label>
                     <input 
                         type="text" 
@@ -129,7 +129,7 @@ let handleChange = (e) =>{
                         value={newForm.imgSmall} 
                         placeholder='imgSmall'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="trailer">trailer:</label>
                     <input 
                         type="text" 
@@ -139,7 +139,7 @@ let handleChange = (e) =>{
                         value={newForm.trailer} 
                         placeholder='trailer'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="video">video:</label>
                     <input 
                         type="text" 
@@ -149,7 +149,7 @@ let handleChange = (e) =>{
                         value={newForm.video} 
                         placeholder='video'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="year">year:</label>
                     <input 
                         type="text" 
@@ -159,7 +159,7 @@ let handleChange = (e) =>{
                         value={newForm.year} 
                         placeholder='year'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="limit">limit:</label>
                     <input 
                         type="text" 
@@ -169,7 +169,7 @@ let handleChange = (e) =>{
                         value={newForm.limit} 
                         placeholder='limit'/>
                 </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="genre">genre:</label>
                     <input 
                         type="text" 
@@ -179,17 +179,7 @@ let handleChange = (e) =>{
                         value={newForm.genre} 
                         placeholder='genre'/>
                 </li>
-                <li>
-                    <label htmlFor="img">Img:</label>
-                    <input 
-                        type="text" 
-                        id='img' 
-                        name='img' 
-                        onChange ={handleChange} 
-                        value={newForm.img} 
-                        placeholder='img'/>
-                </li>
-                <li>
+                <li className='li'>
                     <label htmlFor="isSeries">Check for Series:</label>
                     <input 
                         type="checkbox" 

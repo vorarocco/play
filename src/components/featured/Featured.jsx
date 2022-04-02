@@ -42,14 +42,16 @@ const Featured = ({type, setGenre}) => {
                     >
 
                     <option>Genres</option>
-                    <option value="comedy">Comedy</option>
-                    <option value="action">Action</option>
-                    <option value="drama">Drama</option>
-                    <option value="fantasy">Fantasy</option>
-                    <option value="horror">Horror</option>
-                    <option value="romance">Romance</option>
-                    <option value="mystery">Mystery</option>
-                    <option value="thriller">Thriller</option>
+                    <option value="Comedy">Comedy</option>
+                    <option value="Action">Action</option>
+                    <option value="Drama">Drama</option>
+                    <option value="Fantasy">Fantasy</option>
+                    <option value="Horror">Horror</option>
+                    <option value="Romance">Romance</option>
+                    <option value="Mystery">Mystery</option>
+                    <option value="Thriller">Thriller</option>
+                    <option value="Kid">Kid</option>
+
                 </select>
             </div>
         )}
@@ -59,7 +61,7 @@ const Featured = ({type, setGenre}) => {
             alt="" 
         />
         <div className="info">
-            <img src={content.imgTitle} alt="" />
+            <img src={content.imgSmall} alt="" />
 
             <span className='description'>
                 {content.description}

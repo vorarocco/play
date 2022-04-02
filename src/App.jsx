@@ -21,6 +21,7 @@ function App() {
 
     <div> 
       <Routes>
+        
         <Route path="/register" element={!user ? <Register/> : <Navigate to="/"/>}/>
         {/* <Route path="/register" element={<Register/>}/> */}
 

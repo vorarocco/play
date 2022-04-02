@@ -1,5 +1,6 @@
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
+import { Link } from 'react-router-dom'
 import './register.scss'
 
 const Register = () => {
@@ -29,7 +30,10 @@ const Register = () => {
         <div className='register-top'>
             <div className="register-wrapper">
                 <img className='logo' src="/images/play_logo.png" alt="play-logo" />
-                <button className='logIn-button'>Sign-In</button>
+                <Link to='/login'>
+                   <button className='logIn-button'>LogIn</button> 
+                </Link>
+                
             </div>
         </div>
         <div className='wellcome-massage'>
