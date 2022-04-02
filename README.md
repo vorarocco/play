@@ -13,26 +13,26 @@ Play is a web movie application which let's the user login, browse for movies an
 
 * Stat with the Home page. From this page users can see the options for movie or series.
 
-![home]()
+![home](public/images/homepage_featured.png)
+![home](public/images/homepage_lists.png)
 
 * Or users can create an account by registering on this page.
 
-![register]()
+![register](public/images/registerpage.png)
 
-![login]()
+![login](public/images/loginpage.png)
 
 * The Admin page is able to create, edit, and delete any movie lists or items.
 
-![admin]()
+![admin](public/images/adminpage_movie.png)
 
-![admin]()
+![admin](public/images/adminpage_list.png)
 
 * Anyone can enjoy watching the movies from PLAY 
 
-![movies]()
+![movies](public/images/moviepage.png)
+![series](public/images/seriespage.png)
 
-![series]()
-![series]()
 
 # Built With
 * [Node.js](https://nodejs.org/)
@@ -51,16 +51,15 @@ Play is a web movie application which let's the user login, browse for movies an
 # Installation instructions
 1. Clone the repo
    ```sh
-   git clone 
+   git clone https://github.com/vorarocco/play-front-end
    ```
 2. Install all NPM packages
    ```sh
    npm install
 
 # Wire Frames
-![wireFrames]()
-![wireFrames]()
-![wireFrames]()
+![wireFrames](public/images/1.png)
+![wireFrames](public/images/2.png)
 
 # Contact
 
