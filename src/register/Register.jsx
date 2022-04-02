@@ -2,11 +2,15 @@ import axios from 'axios'
 import React, { useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import './register.scss'
+import { useNavigate } from 'react-router-dom'
+
 
 const Register = () => {
     const [email,setEmail] = useState("")
     const [username, setUsername] = useState("");
     const [password,setPassword] =useState("")
+    const navigate = useNavigate()
+
 
     const emailRef = useRef()
     const usernameRef = useRef()
@@ -20,6 +24,8 @@ const Register = () => {
         try {
             const res = await axios.post(`${process.env.REACT_APP_backendURI}auth/register`,{ email,username,password })
             console.log(res.data)
+            navigate('/login')
+
         } catch (err) {
             console.log(err)
         }

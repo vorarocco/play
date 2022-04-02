@@ -13,6 +13,7 @@ import { useContext }from 'react'
 import {AuthContext}from './context/authContext/AuthContext'
 
 function App() {
+
   // const user = false
   const { user } = useContext(AuthContext);
   console.log(user)
