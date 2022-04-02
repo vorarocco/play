@@ -32,6 +32,7 @@ Play is a web movie application which let's the user login, browse for movies an
 ![movies]()
 
 ![series]()
+![series]()
 
 # Built With
 * [Node.js](https://nodejs.org/)
