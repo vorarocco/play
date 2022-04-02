@@ -3,7 +3,7 @@
 
 <img style="display: block;
   margin-left: auto;
-  margin-right: auto;" src="images/play_logo.png" alt="Logo" width="80" height="80" >
+  margin-right: auto;" src="public/images/play_logo.png" alt="Logo" width="100" height="100" >
 
 Check out the website link here: [Play]()
 
