@@ -49,6 +49,8 @@
                     padding: 5px;
                     margin-right: 10px;
                     font-size: 15px;
+                    text-decoration: none;
+                    color: white;
                 }
 
             }
@@ -68,12 +70,22 @@
         .description{
             margin-bottom: 10px;
             font-size: 14px;
+            color: white;
+            
+                p{
+                    text-decoration: none;
+                    color: white;
+                
+            }
         }
         .genre{
             font-size: 12px;
+            text-decoration: none;
+            color: white;
         }
 
         }
     }
 }
+
 

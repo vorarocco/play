@@ -64,7 +64,7 @@ const ListItem = ({index, item}) => {
                   <span>{movie.year}</span>
                 </div>
                 <div className='description'>
-                  {movie.description}
+                  <p>{movie.description}</p>
                 </div>
                 <div className='genre'>{movie.genre}</div>
                 </div> 
