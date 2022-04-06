@@ -22,7 +22,8 @@ const Register = () => {
             setUsername(usernameRef.current.value)
             setPassword(passwordRef.current.value)
         try {
-            const res = await axios.post(`${process.env.REACT_APP_backendURI}auth/register`,{ email,username,password })
+            const res = await axios.post(`${process.env.REACT_APP_backendURI}auth/register`,
+            { email:emailRef.current.value,username:usernameRef.current.value,password:passwordRef.current.value })
             console.log(res.data)
             navigate('/login')
 
@@ -31,14 +32,21 @@ const Register = () => {
         }
     }
 
+    let handleNavigate = ()=>{
+        navigate('/login')
+    }
+
   return (
     <div style={{backgroundImage:'url(/images/register_bg.png)'}} className='register'> 
         <div className='register-top'>
             <div className="register-wrapper">
-                <img className='logo' src="/images/play_logo.png" alt="play-logo" />
+                <button onClick={handleNavigate}>
+                    <img className='logo' src="/images/play_logo.png" alt="play-logo" />
                 <Link to='/login'>
                    <button className='logIn-button'>LogIn</button> 
-                </Link>
+                </Link>  
+                </button>
+              
                 
             </div>
         </div>

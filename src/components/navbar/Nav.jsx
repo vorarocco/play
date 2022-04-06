@@ -5,9 +5,17 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ChildCareIcon from '@mui/icons-material/ChildCare';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import { Link } from 'react-router-dom';
+import { logOut } from '../../context/authContext/apiCall';
+import { useContext } from 'react';
+import {AuthContext}from '../../context/authContext/AuthContext'
+
 
 
 const Nav = () => {
+    const {  dispatch,user } = useContext(AuthContext);
+    let handeleLogout =()=>{
+        logOut(user,dispatch)
+    }
   return (
     <div className='navbar'>
         <div className='container'>
@@ -55,9 +63,12 @@ const Nav = () => {
                     <span>Settings</span>
                     </Link>
 
-                    <Link to="/logout" className='link'>
-                    <span>Logout</span>
-                    </Link>
+                    
+                    <button onClick={handeleLogout}>
+                        <span>Logout</span>
+                    </button>
+                    
+                    
 
                 </div>
             </div>
