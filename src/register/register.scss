@@ -23,16 +23,16 @@
                 height: 150px;
              }
 
-             .logIn-button{
-                background-color: red;
-                border: none;
-                color: white;
-                border-radius: 5px;
-                padding: 5px 15px;
-                font-size: 15px;
-                font-weight: 500;
-                cursor: pointer;
-              }
+            //  .logIn-button{
+            //     background-color: red;
+            //     border: none;
+            //     color: white;
+            //     border-radius: 5px;
+            //     padding: 5px 15px;
+            //     font-size: 15px;
+            //     font-weight: 500;
+            //     cursor: pointer;
+            //   }
         }
     }
     .wellcome-massage{
@@ -90,3 +90,14 @@
         }
     }
 }
+
+.logIn-button{
+    background-color: red;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+  }
