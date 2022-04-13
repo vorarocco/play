@@ -11,6 +11,7 @@ import { AuthContext } from '../context/authContext/AuthContext'
 const Home = ({type}) => {
   const [lists, setLists] = useState([])
   const [genre, setGenre] = useState(null)
+  const [type1, setType1] = useState(null)
   const context = useContext(AuthContext)
 
   useEffect(()=>{
@@ -18,8 +19,9 @@ const Home = ({type}) => {
     
     const getRandomLists = async ()=>{
       try{
+          setType1(type)
           const res = await axios.get(
-          `${process.env.REACT_APP_backendURI}lists${type ? "?type=" + type : ""}${ genre ? "&genre=" + genre : ""}`,
+          `${process.env.REACT_APP_backendURI}lists${type1 ? "?type=" + type1 : ""}${ genre ? "&genre=" + genre : ""}`,
           {
             headers:{
               token:`Bearer ${context.user.accesToken}`
@@ -33,7 +35,7 @@ const Home = ({type}) => {
       }
     }
     getRandomLists()
-  },[type,genre])
+  },[type1,genre])
 
   return (
     <div className='home'>

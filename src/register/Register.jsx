@@ -39,17 +39,12 @@ const Register = () => {
   return (
     <div style={{backgroundImage:'url(/images/register_bg.png)'}} className='register'> 
         <div className='register-top'>
+            
             <div className="register-wrapper">
                 
                 <img className='logo' src="/images/play_logo.png" alt="play-logo" />
 
-                {/* <button onClick={handleNavigate}> */}
-                {/* <Link to='/login'> */}
-                   <button onClick={handleNavigate} className='logIn-button'>LogIn</button> 
-                {/* </Link>   */}
-                {/* </button> */}
-              
-                
+                              
             </div>
         </div>
         <div className='wellcome-massage'>
@@ -77,6 +72,10 @@ const Register = () => {
 
                 />
                 <button className='register-button' onClick={handleRegister}>Register</button>
+                {/* <p>Do you already has an account ?</p>
+                <button onClick={handleNavigate} className='logIn-button'>LogIn</button>  */}
+
+                <span>Do you already has an account ? <b className='b' onClick={handleNavigate}>Login now.</b></span>
             </div>
         </div>
     </div>

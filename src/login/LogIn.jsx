@@ -17,6 +17,10 @@ const Login = () => {
         navigate('/')
     }
 
+    let handleNavigate = ()=>{
+        navigate('/register')
+    }
+
   return (
     <div style={{backgroundImage:'url(/images/login_bg.png)'}} className='login'> 
         <div className='login-top'>
@@ -48,7 +52,7 @@ const Login = () => {
                     
                     >
                         Log In</button>
-                <span>New to PLAY? <b>Register now.</b></span>
+                <span>New to PLAY? <b className='b_login' onClick={handleNavigate}>Register now.</b></span>
             </form>
             </div>
         </div>
