@@ -5,7 +5,7 @@
   margin-left: auto;
   margin-right: auto;" src="public/images/play_logo.png" alt="Logo" width="100" height="100" >
 
-Check out the website link here: [Play]()
+Check out the website link here: [Play](https://playfrontend.herokuapp.com/)
 
 ### FRONT END
 # Description 
